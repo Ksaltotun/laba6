@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\project\\Laba6_Var_9\\Laba6_Var_9.csproj",
+      "projectUniqueName": "D:\\project\\Laba6_Var_9\\laba6\\Laba6_Var_9.csproj",
       "projectName": "Laba6_Var_9",
-      "projectPath": "D:\\project\\Laba6_Var_9\\Laba6_Var_9.csproj",
+      "projectPath": "D:\\project\\Laba6_Var_9\\laba6\\Laba6_Var_9.csproj",
       "packagesPath": "C:\\Users\\mrv\\.nuget\\packages\\",
-      "outputPath": "D:\\project\\Laba6_Var_9\\obj\\",
+      "outputPath": "D:\\project\\Laba6_Var_9\\laba6\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -36,6 +36,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -47,6 +48,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -65,7 +67,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,15 +13,15 @@
             <ColumnDefinition Width="629*"/>
         </Grid.ColumnDefinitions>
         <TabControl Grid.ColumnSpan="3">
-            <TabItem x:Name="task1Tab" Header="Произведение элементов массива" IsEnabled="False" Margin="-2,-2,-13,0">
+            <TabItem x:Name="task1Tab" Header="Произведение элементов массива" Margin="-2,-2,-13,0" Height="22" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="122*"/>
                         <ColumnDefinition Width="861*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="task1Label1" Content="Исходный массив" HorizontalAlignment="Left" Margin="32,90,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="135"/>
-                    <Label x:Name="task1LAbel2" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="95,90,0,0" VerticalAlignment="Top" Width="90"/>
-                    <Button Content="сгенерировать массив" Grid.Column="1" HorizontalAlignment="Left" Margin="170,45,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="task1Label2" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="95,90,0,0" VerticalAlignment="Top" Width="90"/>
+                    <Button x:Name="Create_SingleArr_1_Button" Content="сгенерировать массив" Grid.Column="1" HorizontalAlignment="Left" Margin="170,45,0,0" VerticalAlignment="Top" Click="Create_SingleArr_1_Button_Click"/>
                     <Label Content="произведение равно:" HorizontalAlignment="Left" Margin="32,133,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <Label Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="112,133,0,0" VerticalAlignment="Top"/>
                 </Grid>
