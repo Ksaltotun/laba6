@@ -25,13 +25,15 @@ namespace Laba6_Var_9
             InitializeComponent();
         }
 
-        class singleModArray_1
+        class singleModArray
         {
 
             private int length;
             private double[] arrayOfDoubles;
-            private double multiplyValue = 1;
-            private int flag = 0;
+            private double multiplyValue;
+            private int indexFirst = 0;
+            private int indexLast = 0;
+            private string arrayString;
             Random rnd = new Random();
             private void generateArray(int numbers)
             {
@@ -39,73 +41,70 @@ namespace Laba6_Var_9
                 for (int i = 0; i < length; i++)
                 {
                     arrayOfDoubles[i] = rnd.Next(0, numbers);
+                    arrayString += Convert.ToString(arrayOfDoubles[i]);
+                    if (i != length - 1)
+                    {
+                        arrayString += " ";
+                    }
                 }
             }
 
-            public singleModArray_1(int len = 1)
+            private void findFirst()
+            {
+                for (int i = 0; i < arrayOfDoubles.Length; i++)
+                {
+                    if (arrayOfDoubles[i] % 2 == 0) 
+                    {
+                        indexFirst = i;
+                        break;
+                    }
+                }
+            }
+
+            private void findLast()
+            {
+                for (int i = 0; i < arrayOfDoubles.Length; i++)
+                {
+                    if (arrayOfDoubles[i] % 2 == 0)
+                    {
+                        indexLast = i;
+                    }
+                }
+            }
+
+            public singleModArray(int len = 1)
             {
                 length = len;
                 generateArray(100);
+            }
+
+            public string getStringForm()
+            {
+                arrayString = "";
+                for (int i = 0; i < length; i++)
+                {
+                    arrayString += Convert.ToString(arrayOfDoubles[i]);
+                    if (i != length - 1)
+                    {
+                        arrayString += " ";
+                    }
+                }
+                return arrayString;
             }
 
             public double getMultiplyValue()
             {
-                for (int i = 1; i < arrayOfDoubles.Length - 2; i++)
+                multiplyValue = 1;
+                findFirst();
+                findLast();
+                if (indexFirst + 1 < indexLast)
                 {
-                    if (flag == 0)
+                    for(int i = indexFirst + 1; i < indexLast; i++)
                     {
-                        if (arrayOfDoubles[i] % 2 == 0)
-                        {
-                            flag = 1;
-                            continue;
-                        }
-                    }
-                    else if (flag == 1)
-                    {
-                        if (arrayOfDoubles[i] % 2 == 0)
-                        {
-                            flag = 2;
-                            break;
-                        }
-                        else
-                        {
-                            multiplyValue *= arrayOfDoubles[i];
-                        }
+                        multiplyValue *= arrayOfDoubles[i];
                     }
                 }
-                Console.WriteLine($"Произведение равно {multiplyValue}");
                 return multiplyValue;
-            }
-            public void printArray()
-            {
-                for (int i = 0; i < arrayOfDoubles.Length; i++)
-                {
-                    Console.Write(arrayOfDoubles[i]);
-                    Console.Write(" ");
-                }
-                Console.WriteLine("");
-            }
-        }
-
-        class singleModArray_2
-        {
-            private int length;
-            private double[] arrayOfDoubles;
-            Random rnd = new Random();
-            private void generateArray(int numbers)
-            {
-                arrayOfDoubles = new double[10];
-
-                for (int i = 0; i < length; i++)
-                {
-                    arrayOfDoubles[i] = rnd.Next(0, numbers);
-                }
-            }
-
-            public singleModArray_2(int len = 1)
-            {
-                length = len;
-                generateArray(100);
             }
 
             public void sortBeforeEven()
@@ -135,6 +134,16 @@ namespace Laba6_Var_9
                 }
             }
 
+            public bool isLengthNotNull()
+            {
+                if(indexFirst + 1 < indexLast)
+                {
+                    return true;
+                } else
+                {
+                    return false;
+                }
+            }
             public void printArray()
             {
                 for (int i = 0; i < arrayOfDoubles.Length; i++)
@@ -151,6 +160,7 @@ namespace Laba6_Var_9
             private int rowsLength;
             private int columnLength;
             private double[,] arrayOfDoubles;
+            private string textMatrix;
             Random rnd = new Random();
             private int negativeStringCounter = 0;
             private void generateArray(int numbers)
@@ -183,12 +193,40 @@ namespace Laba6_Var_9
                             break;
                         }
                     }
-
                 }
                 printMatrixArray();
                 Console.WriteLine($"Строк с отрицательными числами: {negativeStringCounter}");
                 return negativeStringCounter;
             }
+
+            public string getTextMatrix()
+            {
+                
+                textMatrix = "";
+
+                for (int i = 0; i < rowsLength; i++)
+                {
+                    string rowMatrix = "";
+                    for (int j = 0; j < columnLength; j++)
+                    {
+                        string number = Convert.ToString(arrayOfDoubles[i, j]);
+                        rowMatrix += String.Format("{0,-6}", number);
+                        if (j != columnLength - 1)
+                        {
+                            rowMatrix += " ";
+                        }
+                    }
+
+                    textMatrix += rowMatrix;
+                    if (i != columnLength - 1)
+                    {
+                        textMatrix += "\n";
+                    }
+
+                }
+                return textMatrix;
+            }
+
             public void printMatrixArray()
             {
                 for (int i = 0; i < rowsLength; i++)
@@ -204,10 +242,35 @@ namespace Laba6_Var_9
 
         private void Create_SingleArr_1_Button_Click(object sender, RoutedEventArgs e)
         {
-            singleModArray_1 arr1 = new singleModArray_1(10);
-            this.task1Label2.Content = "ssssss";
+            singleModArray arr1 = new singleModArray(10);
+            this.task1Label2.Content = arr1.getStringForm();
+            double multiply = arr1.getMultiplyValue();
+            if (arr1.isLengthNotNull())
+            {
+                this.task1_label_4.Content = Convert.ToString(multiply);
+            } else
+            {
+                this.task1_label_4.Content = "Нет значений между четными";
+            }
+        }
 
+        private void task_2_button_1_Click(object sender, RoutedEventArgs e)
+        {
+            singleModArray arr2 = new singleModArray(10);
+            this.task_2_label_2.Content = arr2.getStringForm();
+            arr2.sortBeforeEven();
+            this.task_2_label_4.Content = arr2.getStringForm();
+        }
+
+        private void task_3_button_1_Click(object sender, RoutedEventArgs e)
+        {
+            matrixModArray arr3 = new matrixModArray(5, 5);
+            string textMatrix = arr3.getTextMatrix();
+            this.task_3_textBlock_1.Text = textMatrix;
+            this.task3_label_3.Content = arr3.calcNegativeRows();
         }
     }
 }
+
+
 
