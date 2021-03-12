@@ -50,7 +50,12 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="372*"/>
                         <ColumnDefinition Width="80*"/>
-                        <ColumnDefinition Width="531*"/>
+                        <ColumnDefinition Width="265*"/>
+                        <ColumnDefinition Width="55*"/>
+                        <ColumnDefinition Width="55*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="136*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock x:Name="task_3_textBlock_1" HorizontalAlignment="Left" Height="240" Margin="77,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" RenderTransformOrigin="0.407,0.375">
                         <TextBlock.Background>
@@ -61,18 +66,30 @@
                         </TextBlock.Background>
                     </TextBlock>
                     <Label x:Name="task3_label_1" Content="Матрица" HorizontalAlignment="Left" Margin="77,82,0,0" VerticalAlignment="Top" Width="240"/>
-                    <Button x:Name="task_3_button_1" Content="Сгенерировать матрицу и посчитать строки" Grid.Column="2" HorizontalAlignment="Left" Margin="230,95,0,0" VerticalAlignment="Top" Width="250" Height="67" Click="task_3_button_1_Click"/>
-                    <Label x:Name="task3_label_2" Content="Результат:" Grid.Column="2" HorizontalAlignment="Left" Margin="230,184,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="task3_label_3" Content="" Grid.Column="2" HorizontalAlignment="Left" Margin="317,184,0,0" VerticalAlignment="Top" Width="38"/>
+                    <Button x:Name="task_3_button_1" Content="Сгенерировать матрицу и посчитать строки" Grid.Column="2" HorizontalAlignment="Left" Margin="230,95,0,0" VerticalAlignment="Top" Width="250" Height="67" Click="task_3_button_1_Click" Grid.ColumnSpan="6"/>
+                    <Label x:Name="task3_label_2" Content="Результат:" Grid.Column="2" HorizontalAlignment="Left" Margin="230,184,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label x:Name="task3_label_3" Content="" Grid.Column="3" HorizontalAlignment="Left" Margin="52,184,0,0" VerticalAlignment="Top" Width="38" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Tab" Header="Задание 2" Margin="37,-1,-41,-1">
+            <TabItem x:Name="Tab" Header="Задание 2" Margin="0,-1,-41,-1" HorizontalAlignment="Right" Width="71">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="147*"/>
                         <ColumnDefinition Width="30*"/>
-                        <ColumnDefinition Width="806*"/>
+                        <ColumnDefinition Width="545*"/>
+                        <ColumnDefinition Width="115*"/>
+                        <ColumnDefinition Width="146*"/>
                     </Grid.ColumnDefinitions>
+                    <Label x:Name="task4_label_1" Content="Введите фамилию" HorizontalAlignment="Left" Margin="92,57,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="195"/>
+                    <TextBox x:Name="task4_input_1" Grid.Column="2" HorizontalAlignment="Left" Margin="130,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="task4_label_2" Content="Введите фамилию на английском" HorizontalAlignment="Left" Margin="92,122,0,0" VerticalAlignment="Top" Width="195" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="task4_input_2" Grid.Column="2" HorizontalAlignment="Left" Margin="130,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label x:Name="task4_label_3" Content="Введите год рождения" HorizontalAlignment="Left" Margin="92,187,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="195"/>
+                    <TextBox x:Name="task4_input_3" Grid.Column="2" HorizontalAlignment="Left" Margin="130,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="введите оценку" HorizontalAlignment="Left" Margin="92,252,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="195"/>
+                    <TextBox x:Name="task4_input_4" Grid.Column="2" HorizontalAlignment="Left" Margin="130,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="task4_butto1" Content="погнали" Grid.Column="2" HorizontalAlignment="Left" Margin="390,79,0,0" VerticalAlignment="Top" Click="task4_butto1_Click"/>
+                    <TextBlock x:Name="task4_textBlock1" Grid.Column="2" HorizontalAlignment="Left" Margin="355,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="117" Width="190"/>
                 </Grid>
             </TabItem>
         </TabControl>

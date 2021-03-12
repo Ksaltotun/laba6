@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace Laba6_Var_9
 {
@@ -201,7 +202,7 @@ namespace Laba6_Var_9
 
             public string getTextMatrix()
             {
-                
+
                 textMatrix = "";
 
                 for (int i = 0; i < rowsLength; i++)
@@ -222,7 +223,6 @@ namespace Laba6_Var_9
                     {
                         textMatrix += "\n";
                     }
-
                 }
                 return textMatrix;
             }
@@ -240,6 +240,71 @@ namespace Laba6_Var_9
             }
         }
 
+        struct Registration
+        {
+            public string surname;
+            public string sex;
+            public string adress;
+            public int grade1, grade2, grade3;
+        }
+
+        static Tuple<string, string, string, float, int> Corteg(string surname, int surnameEnglish, int birthDayYear, int grade)
+
+        {
+            string p = surname, email, otv;
+            float sum = 0, sr;
+            Registration[] st = new Registration[5];
+
+            st[0].surname = "Петров";
+            st[0].sex = "Мужской";
+            st[0].adress = "Коммунаров, 51/5";
+            st[0].grade1 = 2; st[0].grade2 = 8; st[0].grade3 = 9;
+
+            st[1].surname = "Иванов";
+            st[1].sex = "Мужской";
+            st[1].adress = "Советская, 43/1";
+            st[1].grade1 = 6; st[1].grade2 = 4; st[1].grade3 = 8;
+
+            st[2].surname = "Сидорова";
+            st[2].sex = "Женский";
+            st[2].adress = "Ленина, 666";
+            st[2].grade1 = 6; st[2].grade2 = 6; st[2].grade3 = 6;
+
+            st[3].surname = "Ботанова";
+            st[3].sex = "Женский";
+            st[3].adress = "Портовая д.666";
+            st[3].grade1 = 9; st[3].grade2 = 9; st[3].grade3 = 10;
+
+            st[3].surname = "Литвинова";
+            st[3].sex = "Женский";
+            st[3].adress = "Лазурная д.17 кв.100";
+            st[3].grade1 = 4; st[3].grade2 = 4; st[3].grade3 = 5;
+
+            int nom = -1;
+            int roundedYear;
+            float averageGrade;
+            string sex;
+
+            for (int i = 0; i < 5; i++)
+                if (st[i].surname == surname)
+                {
+                    nom = i;
+                    break;
+                }
+            if (nom != -1)
+            {
+                email = surnameEnglish + Convert.ToString(birthDayYear) + "@gmail.com";
+                sum = st[nom].grade1 + st[nom].grade2 + st[nom].grade3 + grade;
+                averageGrade = sum / 4;
+                roundedYear = 2021 - birthDayYear;
+                sex = st[nom].sex;
+            }
+            else { email = surnameEnglish + Convert.ToString(birthDayYear) + "@gmail.com"; sex = "udefined"; averageGrade = grade / 4f; roundedYear = 2021 - birthDayYear; }
+            
+            return Tuple.Create<string, string, string, float, int>(surname, sex, email, averageGrade, roundedYear);
+        }
+
+        private bool normalek = true;
         private void Create_SingleArr_1_Button_Click(object sender, RoutedEventArgs e)
         {
             singleModArray arr1 = new singleModArray(10);
@@ -268,6 +333,35 @@ namespace Laba6_Var_9
             string textMatrix = arr3.getTextMatrix();
             this.task_3_textBlock_1.Text = textMatrix;
             this.task3_label_3.Content = arr3.calcNegativeRows();
+        }
+
+        private void task4_butto1_Click(object sender, RoutedEventArgs e)
+        {
+            string surname = this.task4_input_1.Text;
+            string surnameEnglish = this.task4_input_2.Text;
+            int birthdayYear;
+
+            if (!Regex.IsMatch(surnameEnglish, @"[a-zA-z_]{1}\w"))
+            {
+                MessageBox.Show("Фамилию на английском пишите латинкой.");
+                this.task4_input_2.Text = "";
+                normalek = false;
+            }
+            else
+            {
+                normalek = true;
+            }
+            try
+            {
+                birthdayYear = Convert.ToInt32(this.task4_input_3.Text);
+                normalek = true;
+            }
+            catch
+            {
+                MessageBox.Show("Фамилию на английском пишите латинкой.");
+                this.task4_input_3.Text = "";
+                normalek = false;
+            }
         }
     }
 }
